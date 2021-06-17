@@ -42,4 +42,5 @@ libev
 wget http://dist.schmorp.de/libev/libev-4.33.tar.gz
 wget https://ftp.pcre.org/pub/pcre/pcre-8.45.tar.gz
 wget https://github.com/shadowsocks/shadowsocks-libev/releases/download/v3.3.5/shadowsocks-libev-3.3.5.tar.gz
+wget https://raw.githubusercontent.com/skylens/macOSCI/main/Makefile
 ```

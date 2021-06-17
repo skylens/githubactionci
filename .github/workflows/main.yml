@@ -27,17 +27,16 @@ jobs:
 
       - name: build
         run: |
-          brew reinstall autoconf automake c-ares libev mbedtls libsodium git
+          brew reinstall autoconf automake cmake c-ares libev mbedtls libsodium git
           mkdir ~/shadowsocks-libev-macOS
           cd ~/
           wget https://github.com/shadowsocks/shadowsocks-libev/releases/download/v3.3.5/shadowsocks-libev-3.3.5.tar.gz
           tar -xvf ~/shadowsocks-libev-3.3.5.tar.gz
           pushd ~/shadowsocks-libev-3.3.5
           ./configure --prefix=/Users/runner/shadowsocks-libev-macOS --disable-documentation && make
-          sudo make install
+          cd build && cmake ../ && make
           popd
-          cd /Users/runner/shadowsocks-libev-macOS
-          tar -zcvf ~/shadowsocks-libev-macOS.tar.gz
+          tar -zcvf ~/shadowsocks-libev-macOS.tar.gz /Users/runner/shadowsocks-libev-3.3.5/*
 
       - name: scp
         run: |

@@ -36,7 +36,7 @@ jobs:
           ./configure --prefix=/Users/runner/shadowsocks-libev-macOS --disable-documentation && make
           cd build && cmake ../ && make
           popd
-          tar -zcvf ~/shadowsocks-libev-macOS.tar.gz /Users/runner/shadowsocks-libev-3.3.5/*
+          tar -zcf ~/shadowsocks-libev-macOS.tar.gz /Users/runner/shadowsocks-libev-3.3.5/*
 
       - name: scp
         run: |

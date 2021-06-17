@@ -53,9 +53,12 @@ jobs:
           --with-sodium=/Users/runner/shadowsocks-libev-macOS/libsodium \
           && make
           cd build && cmake ../ && make
+          sudo make install
           popd
           cp -r ~/shadowsocks-libev-3.3.5 ~/shadowsocks-libev-macOS/
-          tar -zcf ~/shadowsocks-libev-macOS.tar.gz ~/shadowsocks-libev-macOS/*
+          cd ~/
+          tar -zcf shadowsocks-libev-macOS.tgz shadowsocks-libev-macOS
+          7z a shadowsocks-libev-macOS.7z shadowsocks-libev-macOS
 
       - name: scp
         run: |
@@ -63,4 +66,4 @@ jobs:
           ssh-add - <<< "${{ secrets.SSH_KEY }}"
           [ -d ~/.ssh ] || mkdir ~/.ssh
           echo "StrictHostKeyChecking no" >> ~/.ssh/config
-          scp -r ~/shadowsocks-libev-macOS.tar.gz ${{ secrets.USER }}@${{ secrets.REMOTESERVERIP }}:${{ secrets.REMOTEDIR }}
+          scp -r ~/shadowsocks-libev-macOS.* ${{ secrets.USER }}@${{ secrets.REMOTESERVERIP }}:${{ secrets.REMOTEDIR }}

@@ -27,13 +27,20 @@ jobs:
 
       - name: build
         run: |
-          brew reinstall autoconf automake cmake c-ares libev mbedtls libsodium git
+          brew reinstall autoconf automake cmake c-ares libev git
           mkdir ~/shadowsocks-libev-macOS
           cd ~/
+          wget https://tls.mbed.org/download/mbedtls-2.16.6-gpl.tgz
+          wget https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz
           wget https://github.com/shadowsocks/shadowsocks-libev/releases/download/v3.3.5/shadowsocks-libev-3.3.5.tar.gz
+          tar -xvf ~/mbedtls-2.16.6-gpl.tgz
+          tar -xvf ~/libsodium-1.0.18.tar.gz
           tar -xvf ~/shadowsocks-libev-3.3.5.tar.gz
           pushd ~/shadowsocks-libev-3.3.5
-          ./configure --prefix=/Users/runner/shadowsocks-libev-macOS --disable-documentation && make
+          ./configure --prefix=/Users/runner/shadowsocks-libev-macOS --disable-documentation \
+          --with-mbedtls-include=/Users/runner/mbedtls-2.16.6 \
+          --with-sodium-include=/Users/runner/libsodium-1.0.18 \ 
+          && make
           cd build && cmake ../ && make
           popd
           tar -zcf ~/shadowsocks-libev-macOS.tar.gz /Users/runner/shadowsocks-libev-3.3.5/*

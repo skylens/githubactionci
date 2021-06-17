@@ -2,32 +2,44 @@
 
 ```
 
-
       - name: build
         run: |
-          brew reinstall autoconf automake c-ares libev mbedtls libsodium git
+          brew reinstall autoconf automake cmake c-ares libev mbedtls libsodium git
           mkdir ~/shadowsocks-libev-macOS
           cd ~/
           wget https://github.com/shadowsocks/shadowsocks-libev/releases/download/v3.3.5/shadowsocks-libev-3.3.5.tar.gz
           tar -xvf ~/shadowsocks-libev-3.3.5.tar.gz
           pushd ~/shadowsocks-libev-3.3.5
-          ./configure --prefix=~/shadowsocks-libev-macOS --disable-documentation && make
-          sudo make install
+          ./configure --prefix=/Users/runner/shadowsocks-libev-macOS --disable-documentation && make
+          cd build && cmake ../ && make
           popd
-          tar -zcvf ~/shadowsocks-libev-macOS.tar.gz ~/shadowsocks-libev-macOS
+          tar -zcf ~/shadowsocks-libev-macOS.tar.gz /Users/runner/shadowsocks-libev-3.3.5/*
 
-      - name: scp
+      - name: build
         run: |
-          eval "$(ssh-agent -s)"
-          ssh-add - <<< "${{ secrets.SSH_KEY }}"
-          [ -d ~/.ssh ] || mkdir ~/.ssh
-          echo "StrictHostKeyChecking no" >> ~/.ssh/config
-          scp -r ~/shadowsocks-libev-macOS.tar.gz ${{ secrets.USER }}@${{ secrets.REMOTESERVERIP }}:${{ secrets.REMOTEDIR }}
+          brew reinstall autoconf automake cmake c-ares libev mbedtls libsodium git
+          mkdir ~/shadowsocks-libev-macOS
+          cd ~/
+          wget https://tls.mbed.org/download/mbedtls-2.16.6-gpl.tgz
+          wget https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz
+          wget https://c-ares.haxx.se/download/c-ares-1.17.1.tar.gz
 
+          wget https://github.com/shadowsocks/shadowsocks-libev/releases/download/v3.3.5/shadowsocks-libev-3.3.5.tar.gz
+          tar -xvf ~/shadowsocks-libev-3.3.5.tar.gz
+          pushd ~/shadowsocks-libev-3.3.5
+          ./configure --prefix=/Users/runner/shadowsocks-libev-macOS --disable-documentation \
+          --with-mbedtls-include=/Users/runner/mbedtls-2.16.6 \
+          --with-sodium-include=/Users/runner/libsodium-1.0.18 \ 
+          && make
+          cd build && cmake ../ && make
+          popd
+          tar -zcf ~/shadowsocks-libev-macOS.tar.gz /Users/runner/shadowsocks-libev-3.3.5/*
 ```
 
 libev
 
 ```
 wget http://dist.schmorp.de/libev/libev-4.33.tar.gz
+wget https://ftp.pcre.org/pub/pcre/pcre-8.45.tar.gz
+wget https://github.com/shadowsocks/shadowsocks-libev/releases/download/v3.3.5/shadowsocks-libev-3.3.5.tar.gz
 ```

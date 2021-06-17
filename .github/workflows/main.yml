@@ -33,10 +33,11 @@ jobs:
           wget https://github.com/shadowsocks/shadowsocks-libev/releases/download/v3.3.5/shadowsocks-libev-3.3.5.tar.gz
           tar -xvf ~/shadowsocks-libev-3.3.5.tar.gz
           pushd ~/shadowsocks-libev-3.3.5
-          ./configure --prefix=~/shadowsocks-libev-macOS --disable-documentation && make
+          ./configure --prefix=/Users/runner/shadowsocks-libev-macOS --disable-documentation && make
           sudo make install
           popd
-          tar -zcvf ~/shadowsocks-libev-macOS.tar.gz ~/shadowsocks-libev-macOS
+          cd /Users/runner/shadowsocks-libev-macOS
+          tar -zcvf ~/shadowsocks-libev-macOS.tar.gz
 
       - name: scp
         run: |

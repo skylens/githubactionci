@@ -45,3 +45,10 @@ wget https://github.com/shadowsocks/shadowsocks-libev/releases/download/v3.3.5/s
 wget https://raw.githubusercontent.com/skylens/macOSCI/main/Makefile
  tar -zcf ~/shadowsocks-libev-macOS.tar.gz ~/shadowsocks-libev-macOS/*
 ```
+
+
+```
+xcodebuild clean -workspace /Users/skylens/Desktop/ShadowsocksX-NG/ShadowsocksX-NG.xcworkspace -scheme ShadowsocksX-NG -configuration Release
+
+xcodebuild archive -workspace /Users/skylens/Desktop/ShadowsocksX-NG/ShadowsocksX-NG.xcworkspace -scheme ShadowsocksX-NG -archivePath /Users/skylens/Desktop/archive/ShadowsocksX-NG.xcarchive
+```

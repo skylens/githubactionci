@@ -47,10 +47,9 @@ wget https://raw.githubusercontent.com/skylens/macOSCI/main/Makefile
 
 
 ```
+git clone https://github.com/shadowsocks/ShadowsocksX-NG.git
 xcodebuild clean -workspace /Users/runner/ShadowsocksX-NG/ShadowsocksX-NG.xcworkspace -scheme ShadowsocksX-NG -configuration Release
-
 xcodebuild archive -workspace /Users/runner/ShadowsocksX-NG/ShadowsocksX-NG.xcworkspace -scheme ShadowsocksX-NG -archivePath /Users/runner/archive/ShadowsocksX-NG.xcarchive
-
 /Users/runner/archive/ShadowsocksX-NG.xcarchive/Products/Applications
 
 ```

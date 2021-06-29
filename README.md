@@ -23,7 +23,6 @@
           wget https://tls.mbed.org/download/mbedtls-2.16.6-gpl.tgz
           wget https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz
           wget https://c-ares.haxx.se/download/c-ares-1.17.1.tar.gz
-
           wget https://github.com/shadowsocks/shadowsocks-libev/releases/download/v3.3.5/shadowsocks-libev-3.3.5.tar.gz
           tar -xvf ~/shadowsocks-libev-3.3.5.tar.gz
           pushd ~/shadowsocks-libev-3.3.5
@@ -48,7 +47,10 @@ wget https://raw.githubusercontent.com/skylens/macOSCI/main/Makefile
 
 
 ```
-xcodebuild clean -workspace /Users/skylens/Desktop/ShadowsocksX-NG/ShadowsocksX-NG.xcworkspace -scheme ShadowsocksX-NG -configuration Release
+xcodebuild clean -workspace /Users/runner/ShadowsocksX-NG/ShadowsocksX-NG.xcworkspace -scheme ShadowsocksX-NG -configuration Release
 
-xcodebuild archive -workspace /Users/skylens/Desktop/ShadowsocksX-NG/ShadowsocksX-NG.xcworkspace -scheme ShadowsocksX-NG -archivePath /Users/skylens/Desktop/archive/ShadowsocksX-NG.xcarchive
+xcodebuild archive -workspace /Users/runner/ShadowsocksX-NG/ShadowsocksX-NG.xcworkspace -scheme ShadowsocksX-NG -archivePath /Users/runner/archive/ShadowsocksX-NG.xcarchive
+
+/Users/runner/archive/ShadowsocksX-NG.xcarchive/Products/Applications
+
 ```

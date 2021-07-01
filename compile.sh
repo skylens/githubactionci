@@ -1,6 +1,6 @@
 #!/bin/bash
 
-brew install automake gsed
+brew install automake gsed upx
 
 # wget https://sourceforge.net/projects/ijbswa/files/Sources/3.0.32%20%28stable%29/privoxy-3.0.32-stable-src.tar.gz
 # tar zxf privoxy-3.0.32-stable-src.tar.gz
@@ -71,8 +71,22 @@ git submodule init && git submodule update
 ./autogen.sh
 ./configure --prefix=/Users/runner/project/dists/shadowsocks-libev --disable-documentation
 make && make install
+cd ..
+
+git clone https://github.com/shadowsocks/v2ray-plugin.git
+cd v2ray-plugin
+VERSION=$(git describe --tags)
+LDFLAGS="-X main.VERSION=$VERSION -s -w -buildid="
+env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -v -ldflags "$LDFLAGS" -o /Users/runner/project/dists/shadowsocks-libev/bin/v2ray-plugin
+cd ..
 
 cp /Users/runner/project/dists/mbedtls/lib/libmbedcrypto.dylib /Users/runner/project/dists/shadowsocks-libev/bin/
+
+# upx
+cd /Users/runner/project/dists/shadowsocks-libev/bin/
+upx ss-local
+upx obfs-local
+upx v2ray-plugin
 
 cd /Users/runner/project/
 

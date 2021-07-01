@@ -18,6 +18,5 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
-      - name: Setup Debug Session
-        uses: csexton/debugger-action@master
+    - name: SSH connection to Actions
+      uses: p3terx/debugger-action@master

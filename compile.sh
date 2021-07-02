@@ -16,6 +16,7 @@ ver=2.16.6
 wget --no-check-certificate https://tls.mbed.org/download/mbedtls-$ver-gpl.tgz
 tar zxf mbedtls-$ver-gpl.tgz
 cd mbedtls-$ver
+# cmake -DUSE_SHARED_MBEDTLS_LIBRARY=On -DPython3_EXECUTABLE=/usr/bin/python3
 gsed -i "s/DESTDIR=\/usr\/local/DESTDIR=\/Users\/runner\/project\/dists\/mbedtls/g" Makefile
 make SHARED=0 && make install
 cd ..

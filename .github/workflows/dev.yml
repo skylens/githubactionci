@@ -17,7 +17,6 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-<<<<<<< HEAD
       - uses: shaowenchen/debugger-action@v2
         name: debugger
         timeout-minutes: 30
@@ -27,7 +26,3 @@ jobs:
           frp_server_port: ${{ secrets.FRP_SERVER_PORT }}
           frp_token: ${{ secrets.FRP_TOKEN }}
           ssh_port: ${{ secrets.FRP_SSH_PORT }}
-=======
-    - name: SSH connection to Actions
-      uses: p3terx/debugger-action@master
->>>>>>> 9630e9de88fafe1c75a15bac1e387f7a0b88ded3

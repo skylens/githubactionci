@@ -2,10 +2,9 @@
 
 name: dev CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   workflow_dispatch:
-
   # Allows you to run this workflow manually from the Actions tab
   # workflow_dispatch:
 
@@ -14,10 +13,16 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: macos-10.15
+    runs-on: macos-11.0
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
-      - name: Setup Debug Session
-        uses: csexton/debugger-action@master
+      - uses: shaowenchen/debugger-action@v2
+        name: debugger
+        timeout-minutes: 30
+        continue-on-error: true
+        with:
+          frp_server_addr: ${{ secrets.FRP_SERVER_ADDR }}
+          frp_server_port: ${{ secrets.FRP_SERVER_PORT }}
+          frp_token: ${{ secrets.FRP_TOKEN }}
+          ssh_port: ${{ secrets.FRP_SSH_PORT }}

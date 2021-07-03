@@ -18,7 +18,9 @@ tar zxf mbedtls-$ver-gpl.tgz
 cd mbedtls-$ver
 # cmake -DUSE_SHARED_MBEDTLS_LIBRARY=On -DPython3_EXECUTABLE=/usr/bin/python3
 gsed -i "s/DESTDIR=\/usr\/local/DESTDIR=\/Users\/runner\/project\/dists\/mbedtls/g" Makefile
-make SHARED=0 && make install
+# make SHARED=0 && make install
+make lib && make install
+cp /Users/runner/project/dists/mbedtls/lib/libmbedcrypto.dylib /Users/runner/project/dists/shadowsocks-libev/bin/
 cd ..
 
 ver=8.45
@@ -76,18 +78,24 @@ cd ..
 
 git clone https://github.com/shadowsocks/v2ray-plugin.git
 cd v2ray-plugin
-VERSION=$(git describe --tags)
-LDFLAGS="-X main.VERSION=$VERSION -s -w -buildid="
-env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -v -ldflags "$LDFLAGS" -o /Users/runner/project/dists/shadowsocks-libev/bin/v2ray-plugin
+env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 \
+go build -v -ldflags "-X main.VERSION=$(git describe --tags) -s -w -buildid=" -o v2ray-plugin-darwin
+cp v2ray-plugin-darwin /Users/runner/project/dists/shadowsocks-libev/bin/v2ray-plugin
 cd ..
 
-cp /Users/runner/project/dists/mbedtls/lib/libmbedcrypto.dylib /Users/runner/project/dists/shadowsocks-libev/bin/
+git clone https://github.com/cbeuw/Cloak.git
+cd Cloak
+env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 \
+go build -v -ldflags "-X main.VERSION=$(git describe --tags) -s -w -buildid=" -o ck-client-darwin ./cmd/ck-client
+cp ck-client-darwin /Users/runner/project/dists/shadowsocks-libev/bin/ck-client
+cd ..
 
 # upx
 cd /Users/runner/project/dists/shadowsocks-libev/bin/
 upx ss-local
 upx obfs-local
 upx v2ray-plugin
+upx ck-client
 
 cd /Users/runner/project/
 

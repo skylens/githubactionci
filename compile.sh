@@ -1,8 +1,13 @@
 #!/bin/bash
 
 brew install automake gsed
-brew install go@1.16.5
-brew link --overwrite go
+brew uninstall go
+
+ver=1.16.5
+mkdir -p ~/bin
+wget https://golang.org/dl/go$ver.darwin-amd64.tar.gz
+tar -xf go$ver.darwin-amd64.tar.gz -C ~/bin
+export PATH=$PATH:~/bin/go/bin
 
 ver=1.2.11
 wget https://zlib.net/zlib-$ver.tar.gz

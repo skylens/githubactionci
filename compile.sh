@@ -4,23 +4,12 @@ brew install automake gsed
 brew install go@1.16.5
 brew link --overwrite go
 
-wget https://sourceforge.net/projects/ijbswa/files/Sources/3.0.32%20%28stable%29/privoxy-3.0.32-stable-src.tar.gz
-tar zxf privoxy-3.0.32-stable-src.tar.gz
-cd privoxy-3.0.32-stable-src
-# git clone https://www.privoxy.org/git/privoxy.git
-# cd privoxy
-autoheader
-autoconf -i
-./configure --prefix=/Users/runner/project/dists/privoxy 
-make
-
-ver=2.16.6
-wget --no-check-certificate https://tls.mbed.org/download/mbedtls-$ver-gpl.tgz
-tar zxf mbedtls-$ver-gpl.tgz
-cd mbedtls-$ver
-gsed -i "s/DESTDIR=\/usr\/local/DESTDIR=\/Users\/runner\/project\/dists\/mbedtls/g" Makefile
-make lib && make install
-cp /Users/runner/project/dists/mbedtls/lib/libmbedcrypto.dylib /Users/runner/project/dists/shadowsocks-libev/bin/
+ver=1.2.11
+wget https://zlib.net/zlib-$ver.tar.gz
+tar -xvf zlib-$ver.tar.gz
+cd zlib-$ver
+./configure --prefix=/Users/runner/project/dists/zlib --static --libdir=/Users/runner/project/dists/zlib/lib
+make && make install
 cd ..
 
 ver=8.45
@@ -31,6 +20,26 @@ cd pcre-$ver
 make && make install
 cd ..
 
+wget https://sourceforge.net/projects/ijbswa/files/Sources/3.0.32%20%28stable%29/privoxy-3.0.32-stable-src.tar.gz
+tar zxf privoxy-3.0.32-stable-src.tar.gz
+cd privoxy-3.0.32-stable-src
+# git clone https://www.privoxy.org/git/privoxy.git
+# cd privoxy
+autoheader
+autoconf -i
+LDFLAGS="-L/Users/runner/project/dists/zlib/lib -L/Users/runner/project/dists/pcre/lib" ./configure --prefix=/Users/runner/project/dists/privoxy
+make && make install
+cd ..
+
+ver=2.16.6
+wget --no-check-certificate https://tls.mbed.org/download/mbedtls-$ver-gpl.tgz
+tar zxf mbedtls-$ver-gpl.tgz
+cd mbedtls-$ver
+gsed -i "s/DESTDIR=\/usr\/local/DESTDIR=\/Users\/runner\/project\/dists\/mbedtls/g" Makefile
+make lib && make install
+cp /Users/runner/project/dists/mbedtls/lib/libmbedcrypto.dylib /Users/runner/project/dists/shadowsocks-libev/bin/
+cd ..
+
 ver=1.0.18
 wget --no-check-certificate https://download.libsodium.org/libsodium/releases/libsodium-$ver.tar.gz
 tar zxf libsodium-$ver.tar.gz
@@ -39,9 +48,10 @@ cd libsodium-$ver
 make && make install
 cd ..
 
-wget http://dist.schmorp.de/libev/libev-4.33.tar.gz 
-tar zxf libev-4.33.tar.gz
-cd libev-4.33
+ver=4.33
+wget http://dist.schmorp.de/libev/libev-$ver.tar.gz 
+tar zxf libev-$ver.tar.gz
+cd libev-$ver
 ./configure --prefix=/Users/runner/project/dists/libev --disable-shared
 make && make install
 cd ..
@@ -78,14 +88,14 @@ git submodule init && git submodule update
 make && make install
 cd ..
 
-git clone https://github.com/shadowsocks/v2ray-plugin.git
+git clone https://github.com/shadowsocks/v2ray-plugin
 cd v2ray-plugin
 env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 \
 go build -v -ldflags "-X main.VERSION=$(git describe --tags) -s -w -buildid=" -o v2ray-plugin-darwin
 cp v2ray-plugin-darwin /Users/runner/project/dists/shadowsocks-libev/bin/v2ray-plugin
 cd ..
 
-git clone https://github.com/cbeuw/Cloak.git
+git clone https://github.com/cbeuw/Cloak
 cd Cloak
 env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 \
 go build -v -ldflags "-X main.VERSION=$(git describe --tags) -s -w -buildid=" -o ck-client-darwin ./cmd/ck-client

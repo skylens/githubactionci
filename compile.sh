@@ -27,7 +27,7 @@ cd ..
 
 wget https://sourceforge.net/projects/ijbswa/files/Sources/3.0.32%20%28stable%29/privoxy-3.0.32-stable-src.tar.gz
 tar zxf privoxy-3.0.32-stable-src.tar.gz
-cd privoxy-3.0.32-stable-src
+cd privoxy-3.0.32-stable
 # git clone https://www.privoxy.org/git/privoxy.git
 # cd privoxy
 autoheader

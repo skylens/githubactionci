@@ -96,17 +96,23 @@ cd ..
 git clone https://github.com/shadowsocks/v2ray-plugin
 cd v2ray-plugin
 env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 \
-go build -v -ldflags "-X main.VERSION=$(git describe --tags) -s -w -buildid=" -o v2ray-plugin-darwin
+go build -v -ldflags "-X main.VERSION=$(git describe --abbrev=0 --tags) -s -w -buildid=" -o v2ray-plugin-darwin
 cp v2ray-plugin-darwin /Users/runner/project/dists/shadowsocks-libev/bin/v2ray-plugin
 cd ..
 
 git clone https://github.com/cbeuw/Cloak
 cd Cloak
 env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 \
-go build -v -ldflags "-X main.VERSION=$(git describe --tags) -s -w -buildid=" -o ck-client-darwin ./cmd/ck-client
+go build -v -ldflags "-X main.VERSION=$(git describe --abbrev=0 --tags) -s -w -buildid=" -o ck-client-darwin ./cmd/ck-client
 cp ck-client-darwin /Users/runner/project/dists/shadowsocks-libev/bin/ck-client
 cd ..
 
-cd /Users/runner/project/
+mkdir -p build/releases
+cp /Users/runner/project/dists/privoxy/sbin/privoxy build/releases
+cp /Users/runner/project/dists/shadowsocks-libev/bin/ss-local build/releases
+cp /Users/runner/project/dists/shadowsocks-libev/bin/obfs-local build/releases
+cp /Users/runner/project/dists/shadowsocks-libev/bin/v2ray-plugin build/releases
+cp /Users/runner/project/dists/shadowsocks-libev/bin/ck-client build/releases
 
-gtar zcvf ~/shadowsocks-libev-macOS-`date +%Y-%m-%d-%s`.tgz dists/
+
+# gtar zcvf ~/shadowsocks-libev-macOS-`date +%Y-%m-%d-%s`.tgz dists/

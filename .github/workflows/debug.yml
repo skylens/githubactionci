@@ -4,9 +4,6 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -24,14 +21,5 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: build
-        run: |
-          git clone https://github.com/shanyungyang/esxi-unlocker.git
-          cd esxi-unlocker
-          ./esxi-build.py
-          ls -al
-          eval "$(ssh-agent -s)"
-          ssh-add - <<< "${{ secrets.SSH_KEY }}"
-          [ -d ~/.ssh ] || mkdir ~/.ssh
-          echo "StrictHostKeyChecking no" >> ~/.ssh/config
-          scp -r esxi-unlocker-*.tgz ${{ secrets.USER }}@${{ secrets.REMOTESERVERIP }}:${{ secrets.REMOTEDIR }}
+      - name: debug
+        uses: csexton/debugger-action@master

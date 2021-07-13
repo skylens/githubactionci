@@ -12,3 +12,13 @@ xcodebuild archive -workspace /Users/runner/ShadowsocksX-NG/ShadowsocksX-NG.xcwo
 
 cd /Users/runner/archive/ShadowsocksX-NG.xcarchive/Products/Applications
 ```
+
+scp 
+
+```
+eval "$(ssh-agent -s)"
+ssh-add - <<< "${{ secrets.SSH_KEY }}"
+[ -d ~/.ssh ] || mkdir ~/.ssh
+echo "StrictHostKeyChecking no" >> ~/.ssh/config
+scp -r esxi-unlocker-*.tgz ${{ secrets.USER }}@${{ secrets.REMOTESERVERIP }}:${{ secrets.REMOTEDIR }}
+```

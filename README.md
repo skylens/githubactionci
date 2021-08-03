@@ -22,3 +22,10 @@ ssh-add - <<< "${{ secrets.SSH_KEY }}"
 echo "StrictHostKeyChecking no" >> ~/.ssh/config
 scp -r esxi-unlocker-*.tgz ${{ secrets.USER }}@${{ secrets.REMOTESERVERIP }}:${{ secrets.REMOTEDIR }}
 ```
+
+
+### Navicat Keygen
+
+https://github.com/wxlg1117/DoubleLabyrinth-navicat-keygen/tree/mac
+
+https://github.com/VAllens/navicat-keygen

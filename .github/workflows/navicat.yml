@@ -24,6 +24,7 @@ jobs:
           make all
           mv bin navicat-keygen
           gtar -zcvf navicat-keygen.tgz navicat-keygen
+          cp navicat-keygen.tgz ~/
       
       # - name: test
       #   run: |
@@ -32,10 +33,10 @@ jobs:
       #     cd /Volumes/Navicat\ Premium/
       #     cp -r Navicat\ Premium.app Applications/
 
-      - name: release
-        uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          files: navicat-keygen.tgz
-          prerelease: ${{ contains(github.ref, '-') }}
+      - name: scp
+        run: |
+          eval "$(ssh-agent -s)"
+          ssh-add - <<< "${{ secrets.SSH_KEY }}"
+          [ -d ~/.ssh ] || mkdir ~/.ssh
+          echo "StrictHostKeyChecking no" >> ~/.ssh/config
+          scp -r ~/navicat-keygen.tgz ${{ secrets.USER }}@${{ secrets.REMOTESERVERIP }}:${{ secrets.REMOTEDIR }}

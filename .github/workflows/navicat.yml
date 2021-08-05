@@ -17,13 +17,20 @@ jobs:
 
       - name: build
         run: |
-          brew install rapidjson capstone keystone libplist
+          brew install rapidjson capstone keystone libplist wget
           git clone https://github.com/robotneo/navicat-keygen.git
           cd navicat-keygen
           git checkout mac
           make all
           mv bin navicat-keygen
           gtar -zcvf navicat-keygen.tgz navicat-keygen
+      
+      # - name: test
+      #   run: |
+      #     wget --no-check-certificate https://download3.navicat.com/download/navicat150_premium_en.dmg
+      #     hdiutil attach navicat150_premium_en.dmg
+      #     cd /Volumes/Navicat\ Premium/
+      #     cp -r Navicat\ Premium.app Applications/
 
       - name: release
         uses: softprops/action-gh-release@v1

@@ -21,8 +21,8 @@ jobs:
           git clone https://notabug.org/doublesine/navicat-keygen
           cd navicat-keygen
           git checkout mac
-          [ -t /usr/local/lib/libplist-2.0.3.dylib ] || ln -s /usr/local/lib/libplist-2.0.3.dylib /usr/local/lib/libplist.dylib
-          [ -t /usr/local/lib/libplist++-2.0.3.dylib ] || ln -s /usr/local/lib/libplist++-2.0.3.dylib /usr/local/lib/libplist++.dylib
+          ln -s /usr/local/lib/libplist-2.0.3.dylib /usr/local/lib/libplist.dylib
+          ln -s /usr/local/lib/libplist++-2.0.3.dylib /usr/local/lib/libplist++.dylib
           make all
           mv bin navicat-keygen
           gtar -zcvf navicat-keygen.tgz navicat-keygen

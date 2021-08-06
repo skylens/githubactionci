@@ -29,3 +29,5 @@ scp -r esxi-unlocker-*.tgz ${{ secrets.USER }}@${{ secrets.REMOTESERVERIP }}:${{
 https://github.com/wxlg1117/DoubleLabyrinth-navicat-keygen/tree/mac
 
 https://github.com/VAllens/navicat-keygen
+
+https://github.com/robotneo/navicat-keygen.git

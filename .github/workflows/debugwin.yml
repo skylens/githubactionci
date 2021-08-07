@@ -20,16 +20,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: vcpkg
-        run: |
-          vcpkg install capstone[x86]:x64-windows-static
-          vcpkg install capstone[x86]:x86-windows-static
-          vcpkg install keystone:x64-windows-static
-          vcpkg install keystone:x86-windows-static
-          vcpkg install openssl-windows:x64-windows-static
-          vcpkg install openssl-windows:x86-windows-static
-          vcpkg install rapidjson:x64-windows-static
-          vcpkg install rapidjson:x86-windows-static
+      # - name: vcpkg
+      #   run: |
+      #     vcpkg install capstone[x86]:x64-windows-static
+      #     vcpkg install capstone[x86]:x86-windows-static
+      #     vcpkg install keystone:x64-windows-static
+      #     vcpkg install keystone:x86-windows-static
+      #     vcpkg install openssl-windows:x64-windows-static
+      #     vcpkg install openssl-windows:x86-windows-static
+      #     vcpkg install rapidjson:x64-windows-static
+      #     vcpkg install rapidjson:x86-windows-static
 
       # Runs a single command using the runners shell
       - name: debug

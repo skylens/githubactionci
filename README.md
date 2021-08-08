@@ -23,6 +23,18 @@ echo "StrictHostKeyChecking no" >> ~/.ssh/config
 scp -r esxi-unlocker-*.tgz ${{ secrets.USER }}@${{ secrets.REMOTESERVERIP }}:${{ secrets.REMOTEDIR }}
 ```
 
+upload-artifact
+
+```
+- uses: actions/upload-artifact@v2
+  with:
+    name: my-artifact
+    path: |
+      path/output/bin/
+      path/output/test-results
+      !path/**/*.tmp
+    retention-days: 5
+```
 
 ### Navicat Keygen
 

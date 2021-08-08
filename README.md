@@ -35,4 +35,3 @@ https://github.com/VAllens/navicat-keygen
 https://github.com/robotneo/navicat-keygen.git
 
 
-test

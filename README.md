@@ -26,10 +26,11 @@ scp -r esxi-unlocker-*.tgz ${{ secrets.USER }}@${{ secrets.REMOTESERVERIP }}:${{
 
 ### Navicat Keygen
 
+https://notabug.org/doublesine/navicat-keygen
+
 https://github.com/wxlg1117/DoubleLabyrinth-navicat-keygen/tree/mac
 
 https://github.com/VAllens/navicat-keygen
 
 https://github.com/robotneo/navicat-keygen.git
 
-add test

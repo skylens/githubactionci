@@ -50,6 +50,6 @@ jobs:
       - name: upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: shadowsocks-live-mac
+          name: shadowsocks-live-linux
           path: build/releases/shadowsocks-libev-ubuntu.tgz
           retention-days: 5

@@ -95,4 +95,4 @@ cp /home/runner/project/dists/shadowsocks-libev/bin/v2ray-plugin build/releases
 cp /home/runner/project/dists/shadowsocks-libev/bin/ck-client build/releases
 
 cd build/releases
-gtar -zcvf shadowsocks-libev-ubuntu.tgz *
+tar -zcvf shadowsocks-libev-ubuntu.tgz *

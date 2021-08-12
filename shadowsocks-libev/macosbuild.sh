@@ -108,7 +108,7 @@ cd ..
 
 mkdir -p build/releases
 cp /Users/runner/project/dists/privoxy/sbin/privoxy build/releases
-cp /Users/runner/project/dists/shadowsocks-libev/bin/ss-local build/releases
+cp /Users/runner/project/dists/shadowsocks-libev/bin/ss-* build/releases
 cp /Users/runner/project/dists/shadowsocks-libev/bin/obfs-local build/releases
 cp /Users/runner/project/dists/shadowsocks-libev/bin/v2ray-plugin build/releases
 cp /Users/runner/project/dists/shadowsocks-libev/bin/ck-client build/releases

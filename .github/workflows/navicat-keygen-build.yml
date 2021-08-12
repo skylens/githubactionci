@@ -27,7 +27,7 @@ jobs:
       
       - name: package
         run: |
-          cd bin
+          cd navicat-keygen/bin
           7z a navicat-keygen-macos.tgz navicat-keygen navicat-patcher
  
       - name: upload artifacts
@@ -87,7 +87,7 @@ jobs:
       - name: package
         shell: pwsh
         run: |
-          cd bin/x64-Release
+          cd navicat-keygen/bin/x64-Release
           7z a navicat-keygen-windows.zip navicat-keygen.exe navicat-patcher.exe
 
       - name: upload artifacts

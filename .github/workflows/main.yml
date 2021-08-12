@@ -11,8 +11,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  
+  macos-build:
     # The type of runner that the job will run on
     runs-on: macos-10.15
 
@@ -23,26 +23,33 @@ jobs:
 
       - name: build
         run: |
-          chmod +x compile.sh
-          ./compile.sh
+          chmod +x shadowsocks-libev/macosbuild.sh
+          ./shadowsocks-libev/macosbuild.sh
 
-      # - name: release
-      #   uses: softprops/action-gh-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
-      #   with:
-      #     files: shadowsocks-libev-macOS-*
-          # prerelease: ${{ contains(github.ref, '-') }}
       - name: upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: shadowsocks-binary
-          path: ~/shadowsocks-libev-macOS-*.tgz
-      
-      - name: scp
+          name: shadowsocks-live-mac
+          path: build/releases/shadowsocks-libev-macos.tgz
+          retention-days: 5
+
+  ubuntu-build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: build
         run: |
-          eval "$(ssh-agent -s)"
-          ssh-add - <<< "${{ secrets.SSH_KEY }}"
-          [ -d ~/.ssh ] || mkdir ~/.ssh
-          echo "StrictHostKeyChecking no" >> ~/.ssh/config
-          scp -r ~/shadowsocks-libev-macOS-* ${{ secrets.USER }}@${{ secrets.REMOTESERVERIP }}:${{ secrets.REMOTEDIR }}
+          chmod +x shadowsocks-libev/linuxbuild.sh
+          ./shadowsocks-libev/linuxbuild.sh
+
+      - name: upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: shadowsocks-live-mac
+          path: build/releases/shadowsocks-libev-ubuntu.tgz
+          retention-days: 5

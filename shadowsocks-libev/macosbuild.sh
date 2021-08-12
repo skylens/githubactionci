@@ -113,5 +113,5 @@ cp /Users/runner/project/dists/shadowsocks-libev/bin/obfs-local build/releases
 cp /Users/runner/project/dists/shadowsocks-libev/bin/v2ray-plugin build/releases
 cp /Users/runner/project/dists/shadowsocks-libev/bin/ck-client build/releases
 
-
-# gtar zcvf ~/shadowsocks-libev-macOS-`date +%Y-%m-%d-%s`.tgz dists/
+cd build/releases
+gtar -zcvf shadowsocks-libev-macos.tgz *

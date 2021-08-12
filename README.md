@@ -1,4 +1,4 @@
-# macOSCI
+# Github Actions CI
 
 1
 

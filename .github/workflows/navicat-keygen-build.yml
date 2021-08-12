@@ -33,7 +33,7 @@ jobs:
       - name: upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: shadowsocks-live-mac
+          name: navicat-keyge-mac
           path: navicat-keygen/bin/navicat-keygen-macos.tgz
           retention-days: 5
   

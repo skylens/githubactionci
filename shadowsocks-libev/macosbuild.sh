@@ -1,12 +1,12 @@
 #!/bin/bash
 
 brew install automake gsed
-brew uninstall go
+# brew uninstall go
 
-ver=1.16.5
-mkdir -p ~/bin
-wget https://golang.org/dl/go$ver.darwin-amd64.tar.gz
-tar -xf go$ver.darwin-amd64.tar.gz -C ~/bin
+# ver=1.16.5
+# mkdir -p ~/bin
+# wget https://golang.org/dl/go$ver.darwin-amd64.tar.gz
+# tar -xf go$ver.darwin-amd64.tar.gz -C ~/bin
 
 ver=1.2.11
 wget https://zlib.net/zlib-$ver.tar.gz
@@ -95,14 +95,14 @@ cd ..
 git clone https://github.com/shadowsocks/v2ray-plugin
 cd v2ray-plugin
 env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 \
-/Users/runner/bin/go/bin/go build -v -ldflags "-X main.VERSION=$(git describe --abbrev=0 --tags) -s -w -buildid=" -o v2ray-plugin-darwin
+go build -v -ldflags "-X main.VERSION=$(git describe --abbrev=0 --tags) -s -w -buildid=" -o v2ray-plugin-darwin
 cp v2ray-plugin-darwin /Users/runner/project/dists/shadowsocks-libev/bin/v2ray-plugin
 cd ..
 
 git clone https://github.com/cbeuw/Cloak
 cd Cloak
 env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 \
-/Users/runner/bin/go/bin/go build -v -ldflags "-X main.VERSION=$(git describe --abbrev=0 --tags) -s -w -buildid=" -o ck-client-darwin ./cmd/ck-client
+go build -v -ldflags "-X main.VERSION=$(git describe --abbrev=0 --tags) -s -w -buildid=" -o ck-client-darwin ./cmd/ck-client
 cp ck-client-darwin /Users/runner/project/dists/shadowsocks-libev/bin/ck-client
 cd ..
 

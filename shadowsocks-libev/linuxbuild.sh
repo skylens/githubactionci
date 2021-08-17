@@ -52,8 +52,7 @@ git clone https://github.com/shadowsocks/shadowsocks-libev
 cd shadowsocks-libev
 git submodule init && git submodule update
 ./autogen.sh
-LDFLAGS="-static" CFLAGS="-static" \
-./configure --prefix=/home/runner/project/dists/shadowsocks-libev \
+LDFLAGS="-static" CFLAGS="-static" ./configure --prefix=/home/runner/project/dists/shadowsocks-libev \
 --disable-documentation \
 --with-mbedtls=/home/runner/project/dists/mbedtls \
 --with-pcre=/home/runner/project/dists/pcre \

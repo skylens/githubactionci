@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo apt-get install --no-install-recommends -y upx
+
 ver=1.2.11
 wget https://zlib.net/zlib-$ver.tar.gz
 tar -xvf zlib-$ver.tar.gz
@@ -68,6 +70,7 @@ git clone https://github.com/shadowsocks/simple-obfs.git
 cd simple-obfs
 git submodule update --init --recursive
 ./autogen.sh
+LIBS="-lpthread -lm" LDFLAGS="-Wl,-static -static -static-libgcc" \
 ./configure --prefix=/home/runner/project/dists/shadowsocks-libev \
 --disable-documentation \
 --with-ev=/home/runner/project/dists/libev
@@ -96,4 +99,5 @@ cp /home/runner/project/dists/shadowsocks-libev/bin/v2ray-plugin build/releases
 cp /home/runner/project/dists/shadowsocks-libev/bin/ck-client build/releases
 
 cd build/releases
+upx *
 tar -zcvf shadowsocks-libev-ubuntu.tgz *

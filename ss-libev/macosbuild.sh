@@ -1,6 +1,6 @@
 #!/bin/bash
 
-brew install automake gsed
+brew install automake gsed upx
 brew uninstall go
 
 ver=1.16.5
@@ -114,4 +114,5 @@ cp /Users/runner/project/dists/shadowsocks-libev/bin/v2ray-plugin build/releases
 cp /Users/runner/project/dists/shadowsocks-libev/bin/ck-client build/releases
 
 cd build/releases
+upx *
 gtar -zcvf shadowsocks-libev-macos.tgz *

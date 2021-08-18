@@ -29,6 +29,8 @@ jobs:
         run: |
           cd navicat-keygen/bin
           7z a navicat-keygen-macos.7z navicat-keygen navicat-patcher
+          chmod +x navicat-keygen navicat-patcher
+          ./navicat-keygen && ./navicat-patcher
  
       - name: upload artifacts
         uses: actions/upload-artifact@v2

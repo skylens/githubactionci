@@ -23,8 +23,8 @@ jobs:
 
       - name: build
         run: |
-          chmod +x shadowsocks-libev/macosbuild.sh
-          ./shadowsocks-libev/macosbuild.sh
+          chmod +x ss-libev/macosbuild.sh
+          ./ss-libev/macosbuild.sh
 
       - name: upload artifacts
         uses: actions/upload-artifact@v2
@@ -44,8 +44,8 @@ jobs:
 
       - name: build
         run: |
-          chmod +x shadowsocks-libev/linuxbuild.sh
-          ./shadowsocks-libev/linuxbuild.sh
+          chmod +x ss-libev/linuxbuild.sh
+          ./ss-libev/linuxbuild.sh
 
       - name: upload artifacts
         uses: actions/upload-artifact@v2

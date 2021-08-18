@@ -28,13 +28,13 @@ jobs:
       - name: package
         run: |
           cd navicat-keygen/bin
-          7z a navicat-keygen-macos.tgz navicat-keygen navicat-patcher
+          7z a navicat-keygen-macos.7z navicat-keygen navicat-patcher
  
       - name: upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: navicat-keyge-mac
-          path: navicat-keygen/bin/navicat-keygen-macos.tgz
+          path: navicat-keygen/bin/navicat-keygen-macos.7z
           retention-days: 5
   
   windows-build:

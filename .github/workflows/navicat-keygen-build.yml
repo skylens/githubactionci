@@ -29,6 +29,7 @@ jobs:
         run: |
           cd navicat-keygen/bin
           7z a navicat-keygen-macos.7z navicat-keygen navicat-patcher
+          chmod +x navicat-keygen navicat-patcher
           ./navicat-keygen
           ./navicat-patcher
  
@@ -91,8 +92,8 @@ jobs:
         run: |
           cd navicat-keygen/bin/x64-Release
           7z a navicat-keygen-windows.zip navicat-keygen.exe navicat-patcher.exe
-          navicat-keygen.exe
-          navicat-patcher.exe
+          .\navicat-keygen.exe
+          .\navicat-patcher.exe
 
       - name: upload artifacts
         uses: actions/upload-artifact@v2

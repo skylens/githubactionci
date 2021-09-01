@@ -108,5 +108,6 @@ cp $PREFIX/shadowsocks-libev/bin/v2ray-plugin build/releases
 cp $PREFIX/shadowsocks-libev/bin/ck-client build/releases
 
 cd build/releases
+otool -L *
 upx *
 gtar -zcvf shadowsocks-libev-macos.tgz *

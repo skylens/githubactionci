@@ -13,7 +13,8 @@ make && make install
 cd ..
 
 ver=8.45
-wget https://ftp.pcre.org/pub/pcre/pcre-$ver.tar.gz
+wget https://sourceforge.net/projects/pcre/files/pcre/$ver/pcre-$ver.tar.gz
+# wget https://ftp.pcre.org/pub/pcre/pcre-$ver.tar.gz
 tar zxf pcre-$ver.tar.gz
 cd pcre-$ver
 ./configure --prefix=$PREFIX/pcre --disable-shared --enable-utf8 --enable-unicode-properties

@@ -43,9 +43,10 @@ jobs:
           }
 
     steps:
-    - uses: actions/checkout@v3
-      with:
-        submodules: 'recursive'
+    - name: git
+      run: |
+        git clone https://github.com/Shadowsocks-NET/Qv2ray
+        cd Qv2ray
 
     - name: Install ninja-build tool
       uses: seanmiddleditch/gha-setup-ninja@v3

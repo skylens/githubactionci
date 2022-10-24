@@ -14,7 +14,11 @@ docker build -t vyos/vyos-build:equuleus docker
 #     -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
 #     vyos/vyos-build:equuleus bash'
 
+cd vyos-build
+sudo su
 ./configure --architecture amd64 --build-by "skylens116@outlook.com"
 make iso
+# install ovftools
 make vmware
-maek ova
+
+cd build

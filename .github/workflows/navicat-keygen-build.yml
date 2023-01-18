@@ -60,14 +60,11 @@ jobs:
       - name: Install Library
         run: |
           vcpkg update
-          vcpkg install capstone[x86]:x64-windows-static
-          vcpkg install capstone[x86]:x86-windows-static
-          vcpkg install keystone:x64-windows-static
-          vcpkg install keystone:x86-windows-static
-          vcpkg install openssl-windows:x64-windows-static
-          vcpkg install openssl-windows:x86-windows-static
+          vcpkg install openssl:x64-windows-static
+          vcpkg install unicorn:x64-windows-static
+          vcpkg install fmt:x64-windows-static
           vcpkg install rapidjson:x64-windows-static
-          vcpkg install rapidjson:x86-windows-static
+          vcpkg install keystone:x64-windows-static
           vcpkg update
           vcpkg integrate install
     

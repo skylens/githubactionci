@@ -1,0 +1,13 @@
+diff --git "a/windows/utils/defaults.c" "b/windows/utils/defaults.c"
+index 1a27000..c63e7d0 100644
+--- "a/windows/utils/defaults.c"
++++ "b/windows/utils/defaults.c"
+@@ -9,7 +9,7 @@
+ FontSpec *platform_default_fontspec(const char *name)
+ {
+     if (!strcmp(name, "Font"))
+-        return fontspec_new("Courier New", false, 10, ANSI_CHARSET);
++        return fontspec_new("Consolas", false, 14, ANSI_CHARSET);
+     else
+         return fontspec_new("", false, 0, 0);
+ }

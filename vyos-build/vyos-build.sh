@@ -16,5 +16,5 @@ wget 'https://drive.skylens.cc/api/raw/?path=/software/vmware/VMware-ovftool-4.3
 #     -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
 #     vyos/vyos-build:equuleus bash'
 
-docker run --rm --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:equuleus sh -c "chmod +x /vyos/make.sh && ./vyos/make.sh"
+docker run --rm --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:equuleus sh -c "chmod +x /vyos/make.sh && /vyos/make.sh"
 

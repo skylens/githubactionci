@@ -10,4 +10,3 @@ sudo ./configure --architecture amd64 --build-by "skylens116@outlook.com"
 # make iso
 # install ovftools && gen privatekey sign ova
 sudo make vmware
-sudo curl -X 'PUT' -T build/vyos_vmware_image-signed.ova https://ftp.skylens.cc/uploads/ -vvv

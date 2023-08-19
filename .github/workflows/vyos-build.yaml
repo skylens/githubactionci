@@ -26,3 +26,12 @@ jobs:
           cd vyos-build
           chmod +x vyos-build.sh
           ./vyos-build.sh
+          sudo chown -R runner:runner .
+      
+      - name: upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: vyos_vmware_image-signed
+          path: vyos-build/vyos-build/build/vyos_vmware_image-signed.ova
+          retention-days: 5
+          

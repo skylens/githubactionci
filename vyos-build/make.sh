@@ -8,11 +8,12 @@ openssl req -x509 -nodes -sha256 -days 3650 -newkey rsa:1024 -keyout privatekey.
 cp privatekey.pem key
 # sudo ./configure --architecture amd64 --build-by "skylens116@outlook.com"
 # https://gitee.com/gas32
+# sudo ./configure --architecture amd64 --build-by "skylens116@outlook.com" \
+# --version 1.3.3 --build-type release \
+# --debian-mirror http://mirrors.tencentyun.com/debian/ \
+# --debian-security-mirror http://mirrors.tencentyun.com/debian-security/ \
+# --pbuilder-debian-mirror http://mirrors.tencentyun.com/debian/
+
 sudo ./configure --architecture amd64 --build-by "skylens116@outlook.com" \
 --version 1.3.3 --build-type release
 sudo make iso
-# install ovftools && gen privatekey sign ova
-sudo make vmware
-sudo mv build/*1.3.3*.iso build/vyos-1.3.3-lts.iso
-sudo mv build/*signed.ova build/vyos-1.3.3-lts-signed.ova
-sudo chown -R runner:runner build

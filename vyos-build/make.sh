@@ -13,3 +13,6 @@ sudo ./configure --architecture amd64 --build-by "skylens116@outlook.com" \
 make iso
 # install ovftools && gen privatekey sign ova
 make vmware
+mv build/*1.3.3*.iso build/vyos-1.3.3-lts.iso
+mv build/*signed.ova build/vyos-1.3.3-lts-signed.ova
+tar -zcf 

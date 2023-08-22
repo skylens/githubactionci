@@ -10,9 +10,9 @@ cp privatekey.pem key
 # https://gitee.com/gas32
 sudo ./configure --architecture amd64 --build-by "skylens116@outlook.com" \
 --version 1.3.3 --build-type release
-make iso
+sudo make iso
 # install ovftools && gen privatekey sign ova
-make vmware
-mv build/*1.3.3*.iso build/vyos-1.3.3-lts.iso
-mv build/*signed.ova build/vyos-1.3.3-lts-signed.ova
-tar -zcf 
+sudo make vmware
+sudo mv build/*1.3.3*.iso build/vyos-1.3.3-lts.iso
+sudo mv build/*signed.ova build/vyos-1.3.3-lts-signed.ova
+sudo chown -R runner:runner build

@@ -33,7 +33,7 @@ git clone https://github.com/skylens/vyos-vm-images
 cp build/vyos-1.3.3-amd64.iso vyos-vm-images
 cd vyos-vm-images
 openssl req -x509 -nodes -sha256 -days 3650 -newkey rsa:1024 -keyout privatekey.pem -out privatekey.pem -subj "/C=US/ST=California/L=Palo Alto/O=VMware/CN=vyos"
-sudo ansible-playbook vmware.yml -e vyos_vmware_private_key_path=privatekey.pem -e cloud_init=false -e ovf_template=simple -e iso_local=$PWD/vyos-1.3.3-amd64.iso -e guest_agent=vmware -e parttable_type=hybrid -e keep_user=true -e enable_dhcp=true -e enable_ssh=true
+sudo ansible-playbook vmware.yml -e vyos_vmware_private_key_path=privatekey.pem -e cloud_init=false -e ovf_template=simple -e iso_url=https://ftp.skylens.cc/vyos/vyos-1.3.3-amd64.iso -e iso_local=$PWD/vyos-1.3.3-amd64.iso -e guest_agent=vmware -e parttable_type=hybrid -e keep_user=true -e enable_dhcp=true -e enable_ssh=true
 sudo cp $PWD/vyos-1.3.3-vmware.ova ../build
 cd ../
 sudo chown -R runner:runner build

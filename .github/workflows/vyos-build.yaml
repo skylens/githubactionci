@@ -26,25 +26,3 @@ jobs:
           cd vyos-build
           chmod +x vyos-build.sh
           ./vyos-build.sh
-          sudo chown -R runner:runner .
-
-      - name: minio-client install
-        run: |
-          curl https://dl.min.io/client/mc/release/linux-amd64/mc --create-dirs -o $HOME/minio-binaries/mc
-          chmod +x $HOME/minio-binaries/mc
-          export PATH=$PATH:$HOME/minio-binaries/
-          mc --help
-      
-      - name: minio upload
-        run: |
-          export PATH=$PATH:$HOME/minio-binaries/
-          mc alias set minio ${{ secrets.MINIO_ENDPOINT }} ${{ secrets.MINIO_ACCESS_KEY }} ${{ secrets.MINIO_SECRET_KEY }}
-          mc cp vyos-build/vyos-build/build/vyos-1.3.3-lts.iso minio/public
-          mc cp vyos-build/vyos-build/build/vyos-1.3.3-lts-signed.ova minio/public
-                
-      - name: upload artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: vyos_vmware_image-signed
-          path: vyos-build/vyos-build/build/vyos_vmware_image-signed.ova
-          retention-days: 5

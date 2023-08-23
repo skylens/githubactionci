@@ -1,8 +1,6 @@
 #!/bin/bash
 set -ex
 
-cd vyos-build
-
 docker pull vyos/vyos-build:equuleus
 git clone -b equuleus --single-branch https://github.com/vyos/vyos-build
 cp make.sh vyos-build

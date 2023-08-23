@@ -29,6 +29,16 @@ vyos-build/vyos-build/build/vyos_vmware_image-signed.ova
 
 vyos-build/vyos-build/build/vyos-1.3.3-amd64.iso
 
+
+group_vars/all.yml
+
+sed -i 's#/tmp#'"$(pwd)/build/"'#g' roles/vmware/vars/main.yml
+
+sed 's#/tmp#'"$HOME/build"'#g' roles/vmware/vars/main.yml
+
+
 ansible-playbook vmware.yml -e vyos_vmware_private_key_path=privatekey.pem -e cloud_init=false -e ovf_template=simple -e iso_local=vyos-1.3.3-amd64.iso -e guest_agent=vmware -e parttable_type=hybrid -e keep_user=true -e enable_dhcp=true -e enable_ssh=true
 
-ansible-playbook vmware.yml -e vyos_vmware_private_key_path=privatekey.pem -e cloud_init=false -e ovf_template=simple -e iso_local=/home/ubuntu/vyos-vm-images/vyos-1.3.3-amd64.iso -e guest_agent=vmware -e parttable_type=hybrid -e keep_user=true -e enable_dhcp=true -e enable_ssh=true
+ansible-playbook vmware.yml -e vyos_vmware_private_key_path=privatekey.pem -e cloud_init=false -e ovf_template=simple -e vyos_version=1.3.3 -e iso_local=/home/ubuntu/vyos-vm-images/vyos-1.3.3-amd64.iso -e guest_agent=vmware -e parttable_type=hybrid -e keep_user=true -e enable_dhcp=true -e enable_ssh=true
+
+ansible-playbook vmware.yml -e vyos_vmware_private_key_path=privatekey.pem -e cloud_init=false -e ovf_template=simple -e iso_local=vyos-1.3.3-amd64.iso -e guest_agent=vmware -e keep_user=true -e enable_dhcp=true -e enable_ssh=true

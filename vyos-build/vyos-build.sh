@@ -7,7 +7,7 @@ cp make.sh vyos-build
 wget 'https://drive.skylens.cc/api/raw/?path=/software/vmware/VMware-ovftool-4.3.0-15755677-lin.x86_64.bundle' -O vyos-build/VMware-ovftool-4.3.0-15755677-lin.x86_64.bundle
 
 sudo apt update
-sudo apt install -y wget libncurses5 tree curl
+sudo apt install -y wget libncurses5 tree curl ansible python3
 sudo ln -s /lib/x86_64-linux-gnu/libncursesw.so.6 /lib/x86_64-linux-gnu/libncursesw.so.5
 chmod +x vyos-build/VMware-ovftool-4.3.0-15755677-lin.x86_64.bundle
 sudo ./vyos-build/VMware-ovftool-4.3.0-15755677-lin.x86_64.bundle --console --required --eulas-agreed
